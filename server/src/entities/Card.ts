@@ -15,4 +15,10 @@ export class CardEntity {
   @ManyToOne(() => SectionEntity, (section) => section.cards)
   @JoinColumn({ name: 'section_id' })
   section: SectionEntity
+
+  @Column("text", { nullable: true })
+  description: string
+
+  @Column("text", { array: true, nullable: true})
+  images: string[]
 }

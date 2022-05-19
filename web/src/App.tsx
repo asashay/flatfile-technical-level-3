@@ -30,7 +30,7 @@ function App() {
       const sortedSections = response.data.sort((a: SectionI, b: SectionI) => a.id - b.id)
       setSections(sortedSections)
     })
-  })
+  }, [])
 
   const onCardSubmit = (sectionId: number, title: string) => {
     axios({
@@ -56,7 +56,7 @@ function App() {
   return (
     <BoardContainer>
       {sections.map((section: SectionI) => {
-        return <Section section={section} onCardSubmit={onCardSubmit}></Section>
+        return <Section key={section.id} section={section} onCardSubmit={onCardSubmit}></Section>
       })}
     </BoardContainer>
   )

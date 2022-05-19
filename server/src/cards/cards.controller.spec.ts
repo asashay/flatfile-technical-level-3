@@ -46,4 +46,19 @@ describe('CardsController', () => {
     jest.spyOn(service, 'create').mockImplementation(() => Promise.resolve(card))
     expect(await controller.addCard({ sectionId: 1, title: 'test' })).toBe(card)
   })
+
+  it('should call update on cards repository', async () => {
+    const card = new CardEntity();
+    card.title = 'test';
+    card.section_id = 1;
+    card.id = 1;
+    card.images = [];
+    card.description = 'test desc';
+
+    
+    jest.spyOn(service, 'update').mockImplementation(() => Promise.resolve(card))
+    expect(await controller.updateCard({ 
+      sectionId: 1, title: 'test', images: [], description: 'test desc', id: 1
+    })).toBe(card)
+  })
 })

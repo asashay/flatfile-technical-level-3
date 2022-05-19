@@ -16,4 +16,9 @@ export class CardsService {
     card.section_id = sectionId
     return this.cardsRepository.save(card)
   }
+
+  update({ title, description, images, id }: 
+    { title: string, description: string, images: string[], id: number }): Promise<CardEntity> {
+    return this.cardsRepository.save({ id, description, title, images})
+  }
 }
